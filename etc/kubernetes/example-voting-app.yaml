@@ -32,7 +32,7 @@ spec:
             secretKeyRef:
               key: POSTGRES_USER
               name: postgres
-        image: postgres:9.4
+        image: postgres:alpine
         name: postgres
         ports:
         - 
