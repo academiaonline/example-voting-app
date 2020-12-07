@@ -1,3 +1,7 @@
+################################################################################
+#      Copyright (C) 2020        Sebastian Francisco Colomar Bauza             #
+#      SPDX-License-Identifier:  GPL-2.0-only                                  #
+################################################################################
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -14,20 +18,16 @@ spec:
         app: postgres
     spec:
       containers:
-      - 
-        name: postgres
+      - name: postgres
         image: postgres:9.4
         ports:
-        -
-          containerPort: 5432
+        - containerPort: 5432
           protocol: TCP        
       volumeMounts:
-      -
-        name: postgres
+      - name: postgres
         mountPath: /var/lib/postgresql/data
     volumes:
-    -
-      name: postgres
+    - name: postgres
       persistentVolumeClaim:
         claimName: postgres
 ---
@@ -46,20 +46,16 @@ spec:
         app: redis
     spec:
       containers:
-      - 
-        name: redis
+      - name: redis
         image: redis:latest
         ports:
-        -
-          containerPort: 6379
+        - containerPort: 6379
           protocol: TCP        
       volumeMounts:
-      -
-        name: redis
+      - name: redis
         mountPath: /data
     volumes:
-    -
-      name: redis
+    - name: redis
       persistentVolumeClaim:
         claimName: redis
 ---
@@ -78,12 +74,10 @@ spec:
         app: result
     spec:
       containers:
-      - 
-        name: result
+      - name: result
         image: academiaonline/example-voting-app:latest-result
         ports:
-        -
-          containerPort: 8080
+        - containerPort: 8080
           protocol: TCP
 ---
 apiVersion: apps/v1
@@ -101,12 +95,10 @@ spec:
         app: vote
     spec:
       containers:
-      - 
-        name: vote
+      - name: vote
         image: academiaonline/example-voting-app:latest-vote
         ports:
-        -
-          containerPort: 8080
+        - containerPort: 8080
           protocol: TCP        
 ---
 apiVersion: apps/v1
@@ -124,8 +116,7 @@ spec:
         app: worker
     spec:
       containers:
-      - 
-        name: worker
+      - name: worker
         image: academiaonline/example-voting-app:latest-worker
 ---
 apiVersion: v1
