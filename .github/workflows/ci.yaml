@@ -104,3 +104,53 @@ jobs:                                                                          #
               done                                                             ;
           done                                                                 ;
                                                                                #
+        while true                                                             ;
+          do                                                                   \
+            sleep 10                                                           ;
+            kubectl logs                                                       \
+              deploy/postgres                                                  \
+            | grep                                                             \
+              "LOG:  database system is ready to accept connections"           \
+            && break                                                           ;
+          done                                                                 ;
+                                                                               #
+        while true                                                             ;
+          do                                                                   \
+            sleep 10                                                           ;
+            kubectl logs                                                       \
+              deploy/redis                                                     \
+            | grep                                                             \
+              "Ready to accept connections"                                    \
+            && break                                                           ;
+          done                                                                 ;
+                                                                               #
+        while true                                                             ;
+          do                                                                   \
+            sleep 10                                                           ;
+            kubectl logs                                                       \
+              deploy/result                                                    \
+            | grep                                                             \
+              "Connected to db"                                                \
+            && break                                                           ;
+          done                                                                 ;
+                                                                               #
+        while true                                                             ;
+          do                                                                   \
+            sleep 10                                                           ;
+            kubectl logs                                                       \
+              deploy/vote                                                      \
+            | grep                                                             \
+              "Listening at: http://0.0.0.0:8080"                              \
+            && break                                                           ;
+          done                                                                 ;
+                                                                               #
+        while true                                                             ;
+          do                                                                   \
+            sleep 10                                                           ;
+            kubectl logs                                                       \
+              deploy/worker                                                    \
+            | grep                                                             \
+              "Found redis at"                                                 \
+            && break                                                           ;
+          done                                                                 ;
+                                                                               #
