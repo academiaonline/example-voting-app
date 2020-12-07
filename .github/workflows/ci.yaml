@@ -71,7 +71,8 @@ jobs:                                                                          #
             while true                                                         ;
               do                                                               \
                 sleep 10                                                       ;
-                kubectl get deploy | grep "$app.*\([0-9]\)/\1" && break        ;
+                kubectl get deploy                                             ;\
+                #| grep "$app.*\([0-9]\)/\1" && break                           ;
               done                                                             ;
           done                                                                 ;
                                                                                #
