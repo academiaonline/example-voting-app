@@ -18,16 +18,33 @@ spec:
         app: postgres
     spec:
       containers:
-      - name: postgres
+      - 
+        env:
+        -
+          name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_PASSWORD
+              name: postgres
+        -
+          name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_USER
+              name: postgres
         image: postgres:9.4
+        name: postgres
         ports:
-        - containerPort: 5432
+        - 
+          containerPort: 5432
           protocol: TCP        
         volumeMounts:
-        - name: postgres
+        - 
           mountPath: /var/lib/postgresql/data
+          name: postgres
       volumes:
-      - name: postgres
+      - 
+        name: postgres
         persistentVolumeClaim:
           claimName: postgres
 ---
@@ -46,16 +63,20 @@ spec:
         app: redis
     spec:
       containers:
-      - name: redis
+      - 
         image: redis:alpine
+        name: redis
         ports:
-        - containerPort: 6379
+        - 
+          containerPort: 6379
           protocol: TCP        
         volumeMounts:
-        - name: redis
+        - 
           mountPath: /data
+          name: redis
       volumes:
-      - name: redis
+      - 
+        name: redis
         persistentVolumeClaim:
           claimName: redis
 ---
@@ -74,10 +95,12 @@ spec:
         app: result
     spec:
       containers:
-      - name: result
+      - 
         image: academiaonline/example-voting-app:latest-result
+        name: result
         ports:
-        - containerPort: 8080
+        - 
+          containerPort: 8080
           protocol: TCP
 ---
 apiVersion: apps/v1
@@ -95,10 +118,12 @@ spec:
         app: vote
     spec:
       containers:
-      - name: vote
+      - 
         image: academiaonline/example-voting-app:latest-vote
+        name: vote
         ports:
-        - containerPort: 8080
+        - 
+          containerPort: 8080
           protocol: TCP        
 ---
 apiVersion: apps/v1
@@ -116,8 +141,9 @@ spec:
         app: worker
     spec:
       containers:
-      - name: worker
+      - 
         image: academiaonline/example-voting-app:latest-worker
+        name: worker
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -164,6 +190,15 @@ spec:
   resources:
     requests:
       storage: 1Gi
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres
+stringData:
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_USER: postgres
+type: Opaque
 ---
 apiVersion: v1
 kind: Service
