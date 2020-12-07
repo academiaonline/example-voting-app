@@ -1,5 +1,6 @@
 Example Voting App
 =========
+![CI](https://github.com/academiaonline/example-voting-app/workflows/CI/badge.svg?branch=docker)
 
 A simple distributed application running across multiple Docker containers.
 
