@@ -23,13 +23,13 @@ spec:
         ports:
         - containerPort: 5432
           protocol: TCP        
-      volumeMounts:
+        volumeMounts:
+        - name: postgres
+          mountPath: /var/lib/postgresql/data
+      volumes:
       - name: postgres
-        mountPath: /var/lib/postgresql/data
-    volumes:
-    - name: postgres
-      persistentVolumeClaim:
-        claimName: postgres
+        persistentVolumeClaim:
+          claimName: postgres
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -51,13 +51,13 @@ spec:
         ports:
         - containerPort: 6379
           protocol: TCP        
-      volumeMounts:
+        volumeMounts:
+        - name: redis
+          mountPath: /data
+      volumes:
       - name: redis
-        mountPath: /data
-    volumes:
-    - name: redis
-      persistentVolumeClaim:
-        claimName: redis
+        persistentVolumeClaim:
+          claimName: redis
 ---
 apiVersion: apps/v1
 kind: Deployment
