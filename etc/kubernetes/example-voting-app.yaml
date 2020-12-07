@@ -16,7 +16,7 @@ spec:
       containers:
       - 
         name: worker
-        image: dockersamples/examplevotingapp_worker:latest
+        image: academiaonline/example-voting-app:latest-worker
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -35,7 +35,7 @@ spec:
       containers:
       - 
         name: vote
-        image: dockersamples/examplevotingapp_vote:latest
+        image: academiaonline/example-voting-app:latest-vote
         ports:
         -
           containerPort: 8080
@@ -58,7 +58,7 @@ spec:
       containers:
       - 
         name: result
-        image: dockersamples/examplevotingapp_result:latest
+        image: academiaonline/example-voting-app:latest-result
         ports:
         -
           containerPort: 8080
