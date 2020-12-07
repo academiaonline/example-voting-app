@@ -96,7 +96,7 @@ spec:
     spec:
       containers:
       - 
-        image: academiaonline/example-voting-app:latest-result
+        image: academiaonline/example-voting-app:1.0-result
         name: result
         ports:
         - 
@@ -119,7 +119,7 @@ spec:
     spec:
       containers:
       - 
-        image: academiaonline/example-voting-app:latest-vote
+        image: academiaonline/example-voting-app:1.0-vote
         name: vote
         ports:
         - 
@@ -142,7 +142,7 @@ spec:
     spec:
       containers:
       - 
-        image: academiaonline/example-voting-app:latest-worker
+        image: academiaonline/example-voting-app:1.0-worker
         name: worker
 ---
 apiVersion: v1
