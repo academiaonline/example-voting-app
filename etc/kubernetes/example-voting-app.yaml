@@ -130,7 +130,6 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /postgres
-  type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -143,7 +142,6 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /redis
-  type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
