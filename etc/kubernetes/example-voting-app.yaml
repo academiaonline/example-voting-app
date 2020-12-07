@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: redis:latest
+        image: redis:alpine
         ports:
         - containerPort: 6379
           protocol: TCP        
