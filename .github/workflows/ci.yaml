@@ -59,7 +59,7 @@ jobs:                                                                          #
                                                                                #
         kubectl taint node $master node-role.kubernetes.io/master:NoSchedule-  ;
                                                                                #
-        compose=etc/$mode/$project.yaml                                        ;
+        compose=etc/$mode/manifests/$project.yaml                              ;
         sed -i /image:.*$project/s/$release/$release-testing/ $compose         ;
         sed -i /imagePullPolicy/s/Always/Never/ $compose                       ;
         kubectl apply -f $compose                                              ;
@@ -153,4 +153,4 @@ jobs:                                                                          #
               "Found redis at"                                                 \
             && break                                                           ;
           done                                                                 ;
-                                                                               #
+################################################################################
